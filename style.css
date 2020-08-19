@@ -1,0 +1,41 @@
+.soon {
+    position: relative;
+    width: 27em;
+    margin: 3em auto;
+    padding: 5em 4em;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    box-shadow: 11px 19px 7px 0px #ccc;
+}
+
+.form-control {
+    border: 0;
+    border-radius: 0;
+}
+
+.btn-default {
+    border: 0;
+    width: 100%;
+    background-color: #ff6b02;
+    color: #fff;
+    border-radius: 0;
+}
+
+.soon img {
+    position: absolute;
+    top: -7px;
+    width: 75px;
+    left: -30px;
+    border-radius: 50%;
+    border: solid 5px #fff;
+}
+
+.soon .heading {
+    position: absolute;
+    top: -41px;
+    background: #f26a36;
+    color: #fff;
+    border-radius: 2px 15px;
+    padding: 4px 18px;
+    right: 0;
+}
