@@ -39,3 +39,15 @@
     padding: 4px 18px;
     right: 0;
 }
+
+.new-year {
+    position: absolute;
+    top: 7px;
+    text-align: center;
+    background-color: #62d41f;
+    color: #fff;
+    border-radius: 15px 0px;
+    padding: 6px 25px;
+    right: 0;
+    font-weight: 600;
+}
