@@ -1,0 +1,76 @@
+.languages {
+    position: fixed;
+    top: 16em;
+    right: 0;
+    background-color: #f0443f;
+    width: 90px;
+    z-index: 9;
+}
+
+.languages img {
+    width: 18px;
+    border-radius: 50%;
+    height: 18px;
+    margin-right: 1px;
+}
+
+.languages a {
+    display: block;
+    padding: 8px 6px;
+}
+
+.language-active {
+    text-decoration: underline;
+    font-weight: 600;
+    background-color: #980101;
+}
+
+.account .card {
+    margin: 80px 0px;
+}
+
+.account .card .btn-default {
+    padding: 19px 10px;
+}
+
+.account .card .card-header {
+    background-color: #f0443f;
+    color: #fff;
+}
+
+.account .blood-group .nice-select {
+    width: 100%;
+}
+
+.account .info {
+    text-decoration: underline;
+}
+
+
+/* admin */
+
+
+/* .card .card-header,
+.card .p-2 {
+    padding: 0px 0px !important;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0;
+} */
+
+.header-area .header-info-right .header-date li {
+    background-color: #ff6a00;
+    padding: 0px 6px;
+    border-radius: 6px;
+}
+
+.header-area .header-info-right .header-date .fa {
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+.header-area .header-info-right .header-date li a {
+    color: #fff;
+    font-weight: 600;
+}
