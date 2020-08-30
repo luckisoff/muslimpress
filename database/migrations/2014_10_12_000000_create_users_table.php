@@ -22,8 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('mobile_number')->nullable();
             $table->string('country')->nullable();
             $table->string('address')->nullable();
+            $table->string('image')->nullable();
             $table->enum('blood_group', ['A+','A-','B+','B-','AB+','AB-','O+',"O-"])->nullable();
-            $table->enum('role',['admin','writter', 'public_writter'])->nullable();
+            $table->enum('role',['admin','writer', 'public_writer','moderator'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

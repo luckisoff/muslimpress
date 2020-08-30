@@ -15,11 +15,11 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(!auth()->user()) abort(404);
+        if(!auth()->user()) abort(404, 'Page Not Found!');
 
-        $roles = ['admin', 'writter'];
-
-        if(!\in_array(auth()->user()->role, $roles)) abort(404);
+        if(!isAdmin()){
+            if(!isWritter()) abort(404, 'Page Not Found!');
+        }
 
         return $next($request);
     }

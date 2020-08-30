@@ -78,6 +78,11 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                @if($news->count())
+                                    <a href="{{route('frontend.news.detail',[app()->getLocale(), $news->first()->id, $news->first()->slug])}}" style="color:#000">{{$news->first()->title}}</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

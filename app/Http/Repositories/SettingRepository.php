@@ -33,7 +33,7 @@ class SettingRepository
             $image_name = uploadImage($logo, $this->storageFolder);
 
             if($setting->key == 'logo' && $setting->value) {
-                deleteImage($setting->value);
+                deleteImage($setting->value, $this->storageFolder);
             }
             if(!$this->updateSetting($setting, $image_name)) return false;
         } elseif(!$setting) {
@@ -47,7 +47,7 @@ class SettingRepository
         if($setting = $this->setting('icon')){
             $image_name = uploadImage($icon, $this->storageFolder);
             if($setting->key == 'icon' && $setting->value) {
-                deleteImage($setting->value);
+                deleteImage($setting->value, $this->storageFolder);
             }
             if(!$this->updateSetting($setting, $image_name)) return false;
         } else {

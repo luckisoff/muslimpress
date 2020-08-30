@@ -1,5 +1,4 @@
 <?php
-
 Route::get('change-locale/{locale}', 'LanguageController@index')->name('change-locale');
 
 Route::group([
@@ -8,14 +7,16 @@ Route::group([
     'middleware'=> 'setlocale'
 ], function(){
 
-    Route::get('/', function () {
-        return view('frontend.landing');
-    });
+    Route::get('/', 'Frontend\NewsController@listNews')->name('frontend.home');
+
+    Route::get('/detail/{news}/{slug}', 'Frontend\NewsController@show')->name('frontend.news.detail');
+
 
     Auth::routes();
 
     Route::get('/home', 'HomeController@index')->name('home');
 });
+
 Route::get('/', function () {
     return redirect(app()->getLocale());
 });

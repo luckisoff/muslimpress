@@ -6,8 +6,8 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="csrf-token" content="{{csrf_token()}}">
 
-  <title>Nep Ask | @yield('title','Home')</title>
-  <link rel="icon" type="image/ico" href="{{asset('assets/img/favicon.ico')}}">
+  <title>{{settings('site_name')}} | @yield('title','Home')</title>
+  <link rel="icon" type="image/ico" href="{{settings('icon')}}">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.css')}}">
-  <link rel="stylesheet" href="{{asset('css/style.css')}}">
-  <link rel="stylesheet" href="{{asset('css/costume-style.css')}}">
+  <link rel="stylesheet" href="{{asset('asssets/css/style.css')}}">
+  <link rel="stylesheet" href="{{asset('assets/css/costume-style.css')}}">
   <!-- Theme style -->
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -40,7 +40,7 @@
             <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                <li class="breadcrumb-item active">@yield('page_title', 'Dashboard')</li>
+                <li class="breadcrumb-item active">@yield('title', 'Dashboard')</li>
             </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->

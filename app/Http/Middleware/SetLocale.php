@@ -16,6 +16,9 @@ class SetLocale
     public function handle($request, Closure $next)
     {
         app()->setLocale($request->segment(1));
+
+        $request->route()->forgetParameter('locale');
+
         return $next($request);
     }
 }
