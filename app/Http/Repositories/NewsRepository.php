@@ -46,6 +46,6 @@ class NewsRepository
     }
 
     public function listLatest(){
-        return $this->model->where('locale', app()->getLocale())->select('id','slug','title')->orderBy('created_at', 'desc')->limit(1)->get();
+        return $this->model->where('locale', app()->getLocale())->select('id','slug','title','image','summary')->orderBy('created_at', 'desc')->limit(2)->get();
     }
 }

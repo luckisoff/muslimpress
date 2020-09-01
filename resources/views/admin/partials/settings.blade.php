@@ -45,7 +45,14 @@
                         <div class="form-group row">
                         <label htmlFor="inputName2" class="col-sm-2 col-form-label">Description</label>
                         <div class="col-sm-10">
-                            <textarea name="description" required id="terms" class="textarea">{{settings('description')?:old('description')}}</textarea>
+                            <textarea name="description" required id="terms" class="form-control">{{settings('description')?:old('description')}}</textarea>
+                        </div>
+                        </div>
+
+                        <div class="form-group row">
+                        <label htmlFor="keywords" class="col-sm-2 col-form-label">Keywords</label>
+                        <div class="col-sm-10">
+                            <textarea name="keywords" required id="keywords" class="form-control" placeholder="Enter the keywords comma separated for seo">{{settings('keywords')?:old('keywords')}}</textarea>
                         </div>
                         </div>
 

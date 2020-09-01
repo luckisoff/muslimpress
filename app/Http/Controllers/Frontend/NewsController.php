@@ -17,7 +17,7 @@ class NewsController extends MainController
 
     public function listNews(){
         $news = $this->repo->listLatest();
-        return view('frontend.landing', compact('news'));
+        return view('frontend.home', compact('news'));
     }
 
     public function show(News $news, $slug){
@@ -26,7 +26,7 @@ class NewsController extends MainController
         
         \insertView($news);
 
-        return $news;
+        return view('frontend.news.detail', compact('news'));
         try {
         } catch (\Throwable $th) {
             return back()->with('error', __('Nothing found'));
