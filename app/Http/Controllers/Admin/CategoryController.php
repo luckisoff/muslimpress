@@ -51,7 +51,7 @@ class CategoryController extends MainAdminController
 
             if(!$category = $this->repo->save($input)) throw new \Exception('Something went wrong!');
 
-            return redirect()->route('admin.category')->with('success','Category created. Add new.');
+            return back()->with('success','Category created. Add new.');
 
 
         } catch (\Throwable $th) {
