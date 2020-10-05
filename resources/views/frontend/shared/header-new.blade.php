@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="{{asset('css/custome.css')}}"> 
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=175907515"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=a175907515w243758960p226948202"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', '175907515');
+        gtag('config', 'a175907515w243758960p226948202');
     </script>
 
 </head>
