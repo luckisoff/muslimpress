@@ -1,5 +1,7 @@
 #!/bin/sh
 # activate maintenance mode
+cd /var/www/html/muslimpress.net
+
 php artisan down
 # update source code
 git pull origin master
