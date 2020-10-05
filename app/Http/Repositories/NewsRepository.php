@@ -35,7 +35,7 @@ class NewsRepository
     }
 
     public function detail(News $news, $slug){
-        return $this->model->where('id', $news->id)->where('slug', $slug)->first();
+        return $this->model->where('id', $news->id)->where('slug', $slug)->withCount('views','likes','comments')->first();
     }
 
     public function getNews($type, $last_id = null, Category $category = null){

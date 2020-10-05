@@ -24,6 +24,7 @@ import VueGoodshare from "vue-goodshare";
 
 Vue.component('news-component', require('./components/NewsComponent.vue').default);
 Vue.component('category-component', require('./components/CategoryComponent.vue').default);
+Vue.component('like-component', require('./components/LikeComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

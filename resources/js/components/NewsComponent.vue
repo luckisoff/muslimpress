@@ -23,14 +23,7 @@
                     <p class="card-text text-justify mt-2">{{article.summary}}</p>
                 </div>
                 <div class="card-footer">
-                    <div class="row">
-                        <div class="col-4"><span class="fa fa-comment-o color-orange"></span> {{article.comments_count}}</div>
-                        <div class="col-4"><span class="fa fa-heart-o color-orange"></span> {{article.likes_count}}</div>
-                        <div class="col-4"><span class="fa fa-eye color-orange"></span> {{article.views_count}}</div>
-                        <div class="col-md-12">
-                            <vue-goodshare v-bind:page_url="createShare(article)" v-bind:title_social="article.title" v-bind:page_description="article.summary"></vue-goodshare>
-                        </div>
-                    </div>
+                    <like-component :article="article"></like-component>
                 </div>
             </div>  
         </div>

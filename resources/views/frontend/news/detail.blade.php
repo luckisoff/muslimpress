@@ -11,9 +11,13 @@
 
             <img class="card-img-top" src="{{$news->image}}" alt="$news->title">
             <blockquote class="blockquote text-justify mt-2">{{$news->summary}}</blockquote>
-            <vue-goodshare></vue-goodshare>
+            <!-- <vue-goodshare></vue-goodshare> -->
             <p class="card-text text-justify">{!!$news->content!!}</p>
-            <vue-goodshare></vue-goodshare>
+            <!-- <vue-goodshare></vue-goodshare> -->
+
+            <div class="likes mt-2 mb-2">
+                <like-component :article="{{$news}}"></like-component>
+            </div>
         </div>
     </div>
 @endsection
