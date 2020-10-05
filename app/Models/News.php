@@ -33,4 +33,8 @@ class News extends MainModel
     public function views(){
         return $this->morphMany(View::class, 'viewable');
     }
+
+    public function earnings(){
+        return $this->morphMany(Earning::class, 'earneable');
+    }
 }

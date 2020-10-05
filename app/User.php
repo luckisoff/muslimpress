@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\WriterRequest;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile_number', 'image', 'country', 'address', 'blood_group','role', 'remember_token'
+        'slug', 'suspended','name', 'email', 'password', 'mobile_number', 'image', 'country', 'address', 'blood_group','role', 'remember_token'
     ];
 
     /**
@@ -39,5 +40,20 @@ class User extends Authenticatable
 
     public function role($role){
         return $this->role == $role;
+    }
+
+    public function setSlugAttribute($name){
+        $this->attributes['slug'] = substr(\md5(time().$name),0,9);
+    }
+
+    public function writerRequest($status = null){
+        if($status){
+            return $this->hasOne(WriterRequest::class)->where('status', $status);
+        }
+        return $this->hasOne(WriterRequest::class);
+    }
+
+    public function earnings(){
+        return $this->hasMany(Earning::class);
     }
 }

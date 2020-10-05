@@ -19,6 +19,5 @@ class LanguageController extends Controller
         if(!in_array($set_locale, $locale_codes)) abort(404, 'Page not found');
 
         return redirect($set_locale);
-
     }
 }

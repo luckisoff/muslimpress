@@ -20,4 +20,8 @@ class Category extends MainModel
     public function articles(){
         return $this->belongsToMany(News::class)->where('type', 'article');
     }
+
+    public function newsArticles(){
+        return $this->belongsToMany(News::class);
+    }
 }

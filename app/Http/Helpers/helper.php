@@ -1,5 +1,40 @@
 <?php
 
+if(!function_exists('getMostCount')){
+    function getMostCount($type){
+        $news = array();
+
+        if(!in_array($type, ['views_count','likes_count', 'comments_count'])) return $news;
+
+        $news = App\Models\News::query();
+
+        if($type == 'views_count'){
+            $news = $news->whereHas('views');
+        } else if($type == 'likes_count'){
+            $news = $news->whereHas('likes');
+        } else if ($type == 'comments_count'){
+            $news = $news->whereHas('comments');
+        }
+
+        return $news->where('locale', app()->getLocale())->get()->sortByDesc($type)->take(5);
+    }
+}
+
+if(!function_exists('getLocaleDetail')){
+    function getLocaleDetail(){
+        $myLocale = null;
+        foreach(config('app.available_locales') as $locale){
+            
+            if($locale['code'] == app()->getLocale()){
+                $myLocale = $locale;
+            }
+
+        }
+
+        return $myLocale;
+    }
+}
+
 if(!function_exists('isRoute')) {
     function isRoute($route) {
         if(Route::currentRouteName() == $route) {
@@ -23,8 +58,16 @@ if(!function_exists('isOwner')) {
 }
 
 
+
+
 if(!function_exists('admin')) {
     function admin() {
+        return auth()->user();
+    }
+}
+
+if(!function_exists('user')){
+    function user(){
         return auth()->user();
     }
 }

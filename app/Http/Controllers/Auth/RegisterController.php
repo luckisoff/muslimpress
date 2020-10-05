@@ -25,12 +25,20 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
+    public function showRegistrationForm(){
+        $file = \file_get_contents(asset('assets/country/countries.json'));
+        $countries = \json_decode($file);
+        // return $countries;
+        return view('auth.register', compact('countries'));
+    }
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -67,6 +75,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'slug'  => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'remember_token' => $data['_token']?:null,

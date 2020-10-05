@@ -59,7 +59,7 @@
 		<div class="footer-bottom">
 			<div class="wrap">
 				<div class="copyrights col-md-6">
-					<p> © 2015 Express News. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p>
+					<!-- <p> © 2015 Express News. All Rights Reserved | Design by  <a href="http://w3layouts.com/"> W3layouts</a></p> -->
 				</div>
 				<div class="footer-social-icons col-md-6">
 					<ul>
@@ -89,6 +89,18 @@
 <!-- //for bootstrap working -->
 <script type="text/javascript" src="{{asset('js/jquery.marquee.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/js/jquery.cookieBar.min.js')}}"></script>
+<script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
+<script>
+    toastr.options.timeOut = 3000;
+	toastr.options.positionClass = 'toast-bottom-left';
+    @if(\Session::has('success'))
+		toastr.success('{{Session::get('success')}}');
+    @endif
+
+    @if(\Session::has('error'))
+		toastr.error('{{Session::get('error')}}');
+    @endif
+</script>
 <script>
     $('.marquee').marquee({ pauseOnHover: true });
     //@ sourceURL=pen.js
@@ -136,6 +148,7 @@
         $().UItoTop({ easingType: 'easeOutQuart' });
     });
 </script>
+@yield('scripts')
 <a href="#to-top" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!---->
 </body>

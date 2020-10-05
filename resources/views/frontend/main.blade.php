@@ -1,13 +1,20 @@
-@include('frontend.shared.header')
-<div class="main-body">
-    <div class="wrap">
-        <div class="col-md-8 content-left">
-            @yield('content')
+@include('frontend.shared.header-new')
+<section id="content" class="container-fluid">
+    <div class="row">
+        
+        <div class="col-md-6 order-md-2 order-lg-2 mb-5" id="middlebar">
+               @yield('content')
+            <!-- <div class="row">
+            </div> -->
         </div>
-        <div class="col-md-4 side-bar">
-            @include('frontend.shared.right-sidebar')
+
+        <div class="col-md-3 order-md-1 order-lg-1" id="leftbar">
+            @include('frontend.shared.leftbar')
         </div>
-        <div class="clearfix"></div>
+
+        <div class="col-md-3 order-sm-12" id="rightbar">
+            @include('frontend.shared.rightbar')
+        </div>
     </div>
-</div>
-@include('frontend.shared.footer')
+</section>
+@include('frontend.shared.footer-new')

@@ -90,7 +90,7 @@ class CategoryController extends MainAdminController
 
     public function destroy(Category $category){
         try {
-            
+
             $this->checkPermission($category->user_id);
 
             if(!$this->repo->delete($category)) throw new \Exception('Something went wrong!');

@@ -7,12 +7,22 @@ Route::group([
     'middleware'=> 'setlocale'
 ], function(){
 
-    Route::get('/', 'Frontend\NewsController@listNews')->name('frontend.home');
+    Auth::routes();
+
+    Route::get('{type?}/{category?}', 'Frontend\NewsController@listNews')->name('frontend.home');
 
     Route::get('/detail/{news}/{slug}', 'Frontend\NewsController@show')->name('frontend.news.detail');
 
+    Route::group(['prefix' => 'news'], function(){
+        Route::get('list/{category}', 'Frontend\NewsController@showList')->name('frontend.news.list');
+    });
 
-    Auth::routes();
+    Route::group(['prefix' => 'writer-request'], function(){
+        Route::get('apply', 'Common\RequestWriterController@index')->name('frontend.writer.apply');
+        Route::post('apply', 'Common\RequestWriterController@store')->name('frontend.writer.apply.store');
+    });
+
+
 
     Route::get('/home', 'HomeController@index')->name('home');
 });

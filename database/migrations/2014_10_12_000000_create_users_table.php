@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -25,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->nullable();
             $table->enum('blood_group', ['A+','A-','B+','B-','AB+','AB-','O+',"O-"])->nullable();
             $table->enum('role',['admin','writer', 'public_writer','moderator'])->nullable();
+            $table->boolean('suspended')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

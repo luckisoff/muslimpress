@@ -12,11 +12,21 @@
 <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('assets/css/fontawesome-all.min.css')}}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{asset('assets/css/jquery.cookieBar.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
 <!-- web-fonts -->
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<link href="{{asset('assets/css/costume-style.css')}}" rel='stylesheet' type='text/css'>
+@yield('styles')
 </head>
-<body>
+<body id="app">
+	<div id="languages">
+		<ul>
+			@foreach(config('app.available_locales') as $locale)
+				<li class="{{$locale['code']==app()->getLocale()?'language-active':''}}"><a href="{{route('change-locale', $locale['code'])}}"> <img src="{{asset('assets/img/flags/'.$locale['flag'])}}" alt=""> {{$locale['name']}}</a></li>
+			@endforeach
+		</ul>
+	</div>
 	<!-- header-section-starts-here -->
 	<div class="header">
 		<div class="header-top">
@@ -24,18 +34,34 @@
 				<div class="top-menu">
 					<ul>
 						<li><a href="#">{{__('Privacy Policy')}}</a></li>
-						<li><a href="#">{{__('Terms of User')}}</a></li>
+						<li><a href="#">{{__('Terms of Use')}}</a></li>
 					</ul>
 				</div>
 				<div class="num">
                     <div class="top-menu">
                         <ul>
-                            <li>
-                                <a href="{{route('login', app()->getLocale())}}"><span class="fa fa-sign-in"></span> {{__('Login')}}</a>
-                            </li>
-                            <li>
-                                <a href="{{route('login', app()->getLocale())}}"><span class="fa fa-user"></span> {{__('Register')}}</a>
-                            </li>
+						<!-- if user is not logged  in -->
+						@if(!admin())
+							<li>
+								<a href="{{route('login', app()->getLocale())}}"><span class="fa fa-sign-in-alt"></span> {{__('Login')}}</a>
+							</li>
+							<li>
+								<a href="{{route('register', app()->getLocale())}}"><span class="fa fa-user"></span> {{__('Register')}}</a>
+							</li>
+						@else
+							<li>
+								<a href="#"><span class="fa fa-user"></span> {{__(admin()->name)}}</a>
+							</li>
+							@if(isWritter() || isAdmin() || isPublicWriter())
+							<li><a href="{{route('admin.index')}}"><span class="fa fa-cog"></span> {{__('Dashboard')}}</a></li>
+							@else
+							<li><a href="{{route('frontend.writer.apply', app()->getLocale())}}"><span class="fa fa-pencil-alt"></span> {{__('Become a writer')}}</a></li>
+							@endif
+							<li><a href="{{route('logout', app()->getLocale())}}" onclick="document.getElementById('logout-form').submit();event.preventDefault()"><span class="fa fa-sign-out-alt"></span> {{__('Logout')}}</a></li>
+							<form id="logout-form" action="{{route('logout',app()->getLocale())}}" method="post" hidden>
+								@csrf
+							</form>
+						@endif
                         </ul>
                     </div>
 				</div>
@@ -46,11 +72,11 @@
 			<div class="logo">
 				<div class="row">
 					<div class="col-md-4">
-						<a href="index.html">Muslimpress</a>
-						<span>{{__('Voice of the voiceless')}}</span>
+						<a href="/{{app()->getLocale()}}">Muslimpress</a>
+						<!-- <span>{{__('Voice of the voiceless')}}</span> -->
 					</div>
 					<div class="col-md-8">
-						
+
 					</div>
 				</div>
 			</div>
@@ -64,10 +90,10 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				
+
 			</div>
 			<!--/.navbar-header-->
-		
+
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					 <li class="active"><a href="index.html">Home</a></li>
@@ -107,7 +133,7 @@
 								</div>
 								<div class="col-sm-6">
 									<ul class="multi-column-dropdown">
-									   <li><a href="business.html">features</a></li>	
+									   <li><a href="business.html">features</a></li>
 										<li class="divider"></li>
 										<li><a href="entertainment.html">Movies</a></li>
 									    <li class="divider"></li>
@@ -135,7 +161,7 @@
 							</form>
 						</div>
 				    </div>
-					
+
 					</div>
 					<div class="clearfix"></div>
 				</div>

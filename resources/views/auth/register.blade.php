@@ -1,19 +1,19 @@
-@extends('frontend.app')
-
+@extends('frontend.main')
+@section('title', __('Register'))
 @section('content')
-<div class="container">
-    <div class="row justify-content-center account">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<div class="col-md-12 order-sm-1 order-md-2">
+    <div class="card">
+        <div class="card-header">{{__('Register')}}</div>
+        <div class="card-body">
+            <form method="POST" action="{{ route('register', app()->getLocale()) }}">
+                @csrf
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register', app()->getLocale()) }}">
-                        @csrf
+                <div class="required-info">
+                    {{__('Field with * are required')}}
+                </div>
 
-                        <div class="info">
-                            {{__('Field with * are required')}}
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="name" class="col-form-label">{{ __('Name') }} *</label>
 
@@ -27,7 +27,8 @@
                             <div class="col-md-6">
                             </div>
                         </div>
-
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="email" class="col-form-label">{{ __('E-Mail Address') }} *</label>
 
@@ -39,25 +40,32 @@
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                </div>
 
-                        <div class="form-group" style="position:relative">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="countryField" class="col-form-label">{{ __('Select Country') }}</label>
-                            <br>
-                            <div id="basic"
-                                class="flagstrap"
-                                data-button-type="btn-default"
-                                data-input-name="country"
-                                data-scrollable="true"
-                                data-scrollable-height="250px" style="position:absolute;top:0;left:0">
-                            </div>
-
+                            <select name="country" id="country" class="form-control">
+                                @foreach($countries as $country)
+                                    <option value="{{$country->country}}">{{$country->country}}</option>
+                                @endforeach
+                            </select>
                         </div>
+                    </div>
 
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="mobileNumber">{{__('Mobile Number')}}</label>
                             <input type="number" class="form-control" name="mobile_number" id="mobileNumber" placeholder="{{__('Enter mobile number')}}">
                         </div>
+                    </div>
+                </div>
 
+
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group blood-group">
                             <label for="bloodGroup">{{__('Blood Group')}}</label>
                             <select name="blood_group" id="bloodGroup" class="form-control">
@@ -71,35 +79,46 @@
                                 <option value="O-">O-</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
 
+
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="password" class="col-form-label">{{ __('Password') }} *</label>
-
+            
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="{{__('Create new password')}}">
-
+            
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-
+            
                         </div>
+                    </div>
 
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="password-confirm" class="col-form-label">{{ __('Confirm Password') }} *</label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="{{__('Confirm Password')}}">
                         </div>
-
-                        <div class="form-group mb-0">
-                            <div>
-                                <button type="submit" class="btn btn-default">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+
+
+
+                <div class="form-group mb-0">
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            {{ __('Register') }}
+                        </button>
+                        <a href="{{route('login', app()->getLocale())}}"><small>Already have account?</small></a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

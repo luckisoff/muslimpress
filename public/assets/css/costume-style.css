@@ -1,28 +1,41 @@
-.languages {
+#languages {
     position: fixed;
-    top: 16em;
-    right: 0;
-    background-color: #f0443f;
-    width: 90px;
-    z-index: 9;
+    right: 0px;
+    top: 11em;
+    z-index: 999;
 }
 
-.languages img {
+#languages ul {
+    width: 100px;
+}
+
+#languages li {
+    list-style: none;
+    background-color: #000;
+    padding: 1px 0px;
+    text-align: left;
+}
+
+#languages img {
     width: 18px;
     border-radius: 50%;
     height: 18px;
     margin-right: 1px;
 }
 
-.languages a {
+#languages a {
     display: block;
+    color: #fff;
     padding: 8px 6px;
 }
 
 .language-active {
-    text-decoration: underline;
     font-weight: 600;
-    background-color: #980101;
+    background-color: #d80000 !important;
+}
+
+.language-active a {
+    font-weight: 600;
 }
 
 .account .card {
@@ -156,4 +169,35 @@
 
 .danger {
     color: #ff0000;
+}
+
+.links {
+    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 1em;
+}
+
+.login-panel {
+    width: 33%;
+    margin: 0 auto;
+}
+
+.register-panel {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.required-info {
+    color: red;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 992px){
+    .login-panel {
+        width: 100%;
+    }
+
+    .register-panel{
+        width: 100%;
+    }
 }

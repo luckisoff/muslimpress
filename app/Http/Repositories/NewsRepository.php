@@ -2,6 +2,7 @@
 namespace App\Http\Repositories;
 
 use App\Models\News;
+use App\Models\Category;
 
 class NewsRepository
 {
@@ -37,15 +38,33 @@ class NewsRepository
         return $this->model->where('id', $news->id)->where('slug', $slug)->first();
     }
 
-    public function getNews($last_id = null ){
+    public function getNews($type, $last_id = null, Category $category = null){
+        
+        if($category){
+            $this->model = $this->model->whereHas('categories', function($q) use ($category){
+                $q->where('categories.id', $category->id);
+            });
+        }else{
+            $this->model = $this->model->where('type', $type);
+        }
+
         if($last_id){
             $this->model = $this->model->where('id', '<', $last_id);
         }
 
-        return $this->model->limit(settings('per_page'))->get();
+        $this->model = $this->model
+                        // ->where('locale', app()->getLocale())
+                        ->select('news.id','locale', 'slug','title','image','summary');
+
+        return $this->model
+                // ->where('locale', app()->getLocale())
+                // ->limit(settings('per_page'))
+                ->limit(10)
+                ->withCount('comments','views','likes')
+                ->orderBy('created_at', 'desc')->get();
     }
 
-    public function listLatest(){
-        return $this->model->where('locale', app()->getLocale())->select('id','slug','title','image','summary')->orderBy('created_at', 'desc')->limit(2)->get();
+    public function listLatest($type){
+        return $this->model->where('type', $type)->where('locale', app()->getLocale())->select('id','slug','title','image','summary')->orderBy('created_at', 'desc')->limit(2)->get();
     }
 }

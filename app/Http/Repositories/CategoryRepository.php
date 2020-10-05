@@ -39,4 +39,19 @@ class CategoryRepository
 
         return false;
     }
+
+    public function getCategories($cat_id = null, $type = 'news'){
+
+        $this->model = $this->model->whereHas('newsArticles', function($q) use ($type){
+            $q->where('type', $type);
+        })->orderBy('created_at', 'desc');
+
+        if($cat_id){
+            $this->model = $this->model->where('id', '<', $cat_id);
+        }
+
+        $this->model = $this->model->limit(5)->get();
+
+        return $this->model;
+    }
 }

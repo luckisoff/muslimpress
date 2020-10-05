@@ -15,7 +15,11 @@ class SetLocale
      */
     public function handle($request, Closure $next)
     {
-        app()->setLocale($request->segment(1));
+        $locale = $request->segment(1);
+
+        if(!\in_array($locale, ['en', 'hi'])) abort(404, 'Page not found!');
+
+        app()->setLocale($locale);
 
         $request->route()->forgetParameter('locale');
 
