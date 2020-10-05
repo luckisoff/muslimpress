@@ -32,7 +32,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('deploy','Admin\DeployController@deploy');
+Route::post('deploy','Admin\DeployController@deploy');
 
 
 // including admin panel routes

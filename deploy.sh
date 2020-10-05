@@ -1,6 +1,6 @@
 #!/bin/sh
 # activate maintenance mode
-cd /var/www/html/muslimpress.net
+# cd /var/www/html/muslimpress.net
 
 php artisan down
 # update source code
