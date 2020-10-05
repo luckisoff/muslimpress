@@ -8,7 +8,6 @@
         @endforelse
     </ul>
 </div>
-{{base_path()}}
 <!-- <div class="card mb-5">
     <img class="card-img-top" src="image.jpg" alt="Card image cap">
 </div> -->
