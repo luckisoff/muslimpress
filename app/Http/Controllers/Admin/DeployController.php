@@ -38,10 +38,10 @@ class DeployController extends Controller
                 }
             }
             
-            if (!$allowed) {
-                header('HTTP/1.1 403 Forbidden');
-                exit;
-            }
+            // if (!$allowed) {
+            //     header('HTTP/1.1 403 Forbidden');
+            //     exit;
+            // }
 
             flush();
 
