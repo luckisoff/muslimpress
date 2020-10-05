@@ -1,8 +1,10 @@
 <div class="card mb-5">
-    <div class="card-header">Most Viewed</div>
+    <div class="card-header">{{__("Most Viewed")}}</div>
     <ul class="list-group list-group-flush">
         @forelse(getMostCount('views_count') as $news)
-            <li class="list-group-item">{{$news->title}}</li>
+            <li class="list-group-item">
+                <a href="{{route('frontend.news.detail', [app()->getLocale(),$news, $news->slug])}}">{{$news->title}}</a>
+            </li>
         @empty
             <li class="list-group-item">No data avaialable</li>
         @endforelse
@@ -13,6 +15,6 @@
 </div> -->
 
 <div class="card mb-5">
-    <div class="card-header">Categories</div>
+    <div class="card-header">{{__("Categories")}}</div>
     <category-component></category-component>
 </div>
