@@ -13,8 +13,15 @@ return [
     |
     */
 
+
     'name' => env('APP_NAME', 'Laravel'),
 
+
+    /**
+     * github deploy secret key
+     * 
+    **/
+    'deploy_secret' => env('APP_DEPLOY_SECRET'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment
