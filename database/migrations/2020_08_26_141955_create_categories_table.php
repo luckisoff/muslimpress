@@ -18,9 +18,9 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('en');
             $table->string('hi');
-            $table->string('image');
+            $table->string('image')->nullable();
 
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete(null);
             $table->timestamps();
