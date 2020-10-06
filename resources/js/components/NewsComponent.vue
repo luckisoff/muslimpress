@@ -86,12 +86,10 @@ export default {
                    this.more = false;
                }
 
-               console.log(this.articles.length)
                this.loading = false;
 
            }).catch(error => {
                this.loading = false;
-               console.log('error', error)
            })
        },
 

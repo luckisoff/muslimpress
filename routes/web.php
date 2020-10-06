@@ -34,6 +34,28 @@ Route::get('/', function () {
 
 Route::post('deploy','Admin\DeployController@deploy');
 
+// web api
+Route::prefix('api/v1')->group(function(){
 
+    Route::group(['prefix' => 'news-article'], function(){
+        Route::get('react/{news}', 'Frontend\NewsApiController@likeReact');
+
+        Route::group(['prefix'=> 'comment'], function(){
+
+            Route::post('{news}', 'Frontend\NewsApiController@createComment');
+            
+            Route::get('{news}', 'Frontend\NewsApiController@getComments');
+            
+            Route::get('delete/{comment}', 'Frontend\NewsApiController@deleteComment');
+        });
+        
+        Route::get('{type}/{category?}', 'Frontend\NewsApiController@getNewsArticles');
+        
+    });
+
+    Route::get('category', 'Frontend\CategoryApiController@getCategories');
+
+});
 // including admin panel routes
 require 'admin_routes.php';
+

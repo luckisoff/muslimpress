@@ -18,7 +18,7 @@ class MainApiController extends Controller
         return response()->json($responseData, $code);
     }
 
-    public function error($message = '', $code = 500){
+    public function error($message = '', $code = 200){
         return response()->json([
             'status'    => false,
             'message'   => $message

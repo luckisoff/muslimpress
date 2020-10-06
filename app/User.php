@@ -38,6 +38,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $appends = ['is_me'];
+
+
+    public function getIsMeAttribute(){
+        if(auth()->user() && auth()->user()->id == $this->id) return true;
+        return false;
+    }
+
     public function role($role){
         return $this->role == $role;
     }
@@ -55,5 +63,10 @@ class User extends Authenticatable
 
     public function earnings(){
         return $this->hasMany(Earning::class);
+    }
+
+    public function getImageAttribute($image){
+        if($image) return $image;
+        return asset('assets/user.jpg');
     }
 }

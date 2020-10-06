@@ -7,8 +7,19 @@ use App\User;
 
 class News extends MainModel
 {
+    
     protected $fillable =['title','slug','image','summary','content','tags',
     'source','source_url','type','locale','user_id', 'references', 'status'];
+
+    protected $appends = ['is_liked', 'is_commented'];
+
+    public function getIsLIkedAttribute(){
+        return $this->getStatus($this->likes());
+    }
+
+    public function getIsCommentedAttribute(){
+        return $this->getStatus($this->comments());
+    }
 
     public function setSlugAttribute($title){
         $this->attributes['slug'] = $this->createSlug($title);

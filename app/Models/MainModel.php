@@ -18,4 +18,11 @@ class MainModel extends Model
     
         return strtolower(preg_replace('/-+/', '-', $string)); // Replaces multiple hyphens with single one.
     }
+
+    protected function getStatus($object){
+        if(auth()->user()){
+            if($object->where('user_id', auth()->user()->id)->first()) return true;
+        }
+        return false;
+    }
 }

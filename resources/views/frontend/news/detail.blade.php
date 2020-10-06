@@ -16,7 +16,8 @@
             <!-- <vue-goodshare></vue-goodshare> -->
 
             <div class="likes mt-2 mb-2">
-                <like-component :article="{{$news}}"></like-component>
+                <like-component :article="{{json_encode($news)}}"></like-component>
+                <comments :article="{{json_encode($news)}}"></comments>
             </div>
         </div>
     </div>

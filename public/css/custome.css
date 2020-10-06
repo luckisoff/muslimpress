@@ -19,6 +19,33 @@ body {
   min-width: auto;
 }
 
+.likes {
+  border-top: solid 1px #e0e0e0;
+  padding-top: 5px;
+}
+
+.user .user-image {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: solid 1px #eae9e9;
+}
+
+.user .comment {
+  padding: 7px 12px 2px 21px;
+  background-color: #e2e2e2;
+  border-radius: 21px;
+}
+
+.user .comment .user-name {
+  font-weight: 600;
+}
+
+.user .comment .fa-times-circle {
+  position: absolute;
+  right: 25px;
+}
+
 @keyframes heartbeat
 {
   0%

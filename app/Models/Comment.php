@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Comment extends Model
 {
@@ -13,10 +14,10 @@ class Comment extends Model
     }
 
     public function user(){
-        return $this->belongsTo(App\User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function replies(){
-        return $this->belongsTo(Self::class, 'parent_id');
+        return $this->belongsTo($this, 'parent_id');
     }
 }
