@@ -8,6 +8,9 @@
     <meta name="keywords" content="@yield('keywords', settings('keywords'))" />
     <meta name="description" content="@yield('description', settings('description'))" />
     <meta name="csrf_token" content="{{csrf_token()}}">
+
+    @yield('share')
+
     <link rel="icon" href="{{settings('icon')}}">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">   

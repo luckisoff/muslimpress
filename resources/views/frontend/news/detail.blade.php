@@ -22,3 +22,11 @@
         </div>
     </div>
 @endsection
+
+@section('share')
+<meta property="og:url"           content="{{route('frontend.news.detail',[app()->getLocale(), $news->id, $news->slug])}}" />
+<meta property="og:type"          content="{{$news->type}}" />
+<meta property="og:title"         content="{{$news->title}}" />
+<meta property="og:description"   content="{{$news->summary}}" />
+<meta property="og:image"         content="{{$news->image}}" />
+@endsection
