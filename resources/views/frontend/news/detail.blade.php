@@ -14,7 +14,9 @@
             <!-- <vue-goodshare></vue-goodshare> -->
             <p class="card-text text-justify">{!!$news->content!!}</p>
             <!-- <vue-goodshare></vue-goodshare> -->
-
+            <div class="adoption">
+                Source : <a href="{{$news->source_url}}" target="_blank">{{$news->source}}</a>
+            </div>
             <div class="likes mt-2 mb-2">
                 <like-component :article="{{json_encode($news)}}"></like-component>
                 <comments :article="{{json_encode($news)}}"></comments>
