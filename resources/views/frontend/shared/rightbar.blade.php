@@ -3,7 +3,7 @@
     <ul class="list-group list-group-flush">
         @forelse(getMostCount('comments_count') as $news)
             <li class="list-group-item">
-                <a href="{{route('frontend.news.detail', [app()->getLocale(),$news, $news->slug])}}">
+                <a href="{{rawurldecode(route('frontend.news.detail', [app()->getLocale(),$news, $news->slug]))}}">
                     {{$news->title}}
                 </a>
             </li>
@@ -18,7 +18,7 @@
     <ul class="list-group list-group-flush">
         @forelse(getMostCount('likes_count') as $news)
             <li class="list-group-item">
-                <a href="{{route('frontend.news.detail', [app()->getLocale(),$news, $news->slug])}}">{{$news->title}}</a>
+                <a href="{{rawurldecode(route('frontend.news.detail', [app()->getLocale(),$news, $news->slug]))}}">{{$news->title}}</a>
             </li>
         @empty
             <li class="list-group-item">No data avaialable</li>
